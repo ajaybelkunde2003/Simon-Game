@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuboid Calculator</title>
+    <style>
+      /* Universal selector */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    background-color: rgb(220, 220, 220);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Main container styling */
+#main {
+    margin-top: 150px;
+    background-color: rgb(153, 178, 179);
+    width: 350px;
+    padding: 20px;
+}
+
+/* Heading styling */
+#main h1 {
+    text-align: center;
+    margin: 10px 0 20px 0;
+    color: rgb(255, 255, 255);
+}
+
+/* Input styling */
+#input1,
+#input2,
+#input3 {
+    border: 0;
+    outline: 0;
+    padding: 5px 10px;
+    margin-bottom: 15px;
+    display: block;
+    width: 310px;
+}
+
+/* Button styling */
+#btn1,
+#btn2,
+#btn3 {
+    border: 0;
+    outline: 0;
+    background-color: rgb(47, 240, 240);
+    color: rgb(255, 255, 255);
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    display: block;
+    width: 310px;
+}
+
+/* Paragraph styling */
+#para {
+    color: rgb(255, 255, 255);
+    font-size: 17.6px;
+    display: none;
+}
+    </style>
+<script>
+document.getElementById('btn1').addEventListener('click', calculateVolume);
+document.getElementById('btn2').addEventListener('click', calculateTSA);
+document.getElementById('btn3').addEventListener('click', calculateLSA);
+
+function calculateVolume() {
+    const length = document.getElementById('input1').value;
+    const width = document.getElementById('input2').value;
+    const height = document.getElementById('input3').value;
+    const para = document.getElementById('para');
+
+    if (length && width && height) {
+        const volume = length * width * height;
+        para.textContent = `Volume of Cuboid is ${volume} cm³.`;
+        para.style.display = 'block';
+    } else {
+        showError();
+    }
+}
+
+function calculateTSA() {
+    const length = document.getElementById('input1').value;
+    const width = document.getElementById('input2').value;
+    const height = document.getElementById('input3').value;
+    const para = document.getElementById('para');
+
+    if (length && width && height) {
+        const tsa = 2 * (length * width + width * height + height * length);
+        para.textContent = `T.S.A of Cuboid is ${tsa} cm².`;
+        para.style.display = 'block';
+    } else {
+        showError();
+    }
+}
+
+function calculateLSA() {
+    const length = document.getElementById('input1').value;
+    const width = document.getElementById('input2').value;
+    const height = document.getElementById('input3').value;
+    const para = document.getElementById('para');
+
+    if (length && width && height) {
+        const lsa = 2 * (Number(length) + Number(width)) * height;
+        para.textContent = `L.S.A of Cuboid is ${lsa} cm².`;
+        para.style.display = 'block';
+    } else {
+        showError();
+    }
+}
+
+function showError() {
+    const para = document.getElementById('para');
+    para.textContent = 'Please enter the details correctly.';
+    para.style.display = 'block';
+}
+</script>
+</head>
+<body>
+    <div id="main">
+        <h1>Cuboid Calculator</h1>
+        <input type="number" id="input1" placeholder="Enter length (cm)">
+        <input type="number" id="input2" placeholder="Enter width (cm)">
+        <input type="number" id="input3" placeholder="Enter height (cm)">
+        <button id="btn1">Calculate Volume</button>
+        <button id="btn2">Calculate Total Surface Area</button>
+        <button id="btn3">Calculate Lateral Surface Area</button>
+        <p id="para"></p>
+    </div>
+</body>
+</html>
